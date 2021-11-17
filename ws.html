@@ -1,18 +1,25 @@
-<h1>
-    Web Socket Example
-</h1>
-<p>
-    open console to see connection.
-</p>
-<script>
-    var ws = new WebSocket('ws://localhost:40510');
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>
+        Web Socket Example!!!
+    </h1>
+    <p>This example writes Date:Time into an HTML element with id="demo":</p>
+    <p id="demo"></p>
 
-    ws.onopen = function () {
-        console.log('websocket is connected ...')
-        ws.send('connected')
-    }
+    <script>
+        var ws = new WebSocket('ws://localhost:40510');
 
-    ws.onmessage = function (ev) {
-        console.log(ev);
-    }
-</script>
+        ws.onopen = function () {
+            console.log('websocket is connected ...')
+            ws.send('Hi this is web client, connected...')
+        }
+
+        ws.onmessage = function (ev) {
+            console.log(ev.data);
+            document.getElementById("demo").innerHTML = ev.data;
+        }
+    </script>
+</body>
+</html>
+
